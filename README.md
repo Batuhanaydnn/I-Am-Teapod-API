@@ -1,64 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# I AM A TEAPOD API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proje, `GorevController` ve `UsersController` adlı iki HTTP istemci kontrolcüsü sınıfını içeren bir PHP tabanlı web uygulamasıdır. Uygulama, görevlerin ve kullanıcıların yönetimini sağlar. Bu README dosyası, projenin genel tanımını, kullanımını ve API'nin endpoint'lerini içeren ayrıntıları sağlar.
 
-## About Laravel
+## Class Diyagramları
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### GorevController
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Bu sınıf, görevlerin yönetimiyle ilgili işlevleri sağlar. Aşağıdaki metodları içerir:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   `getTasks`: Tüm görevleri getirir.
+-   `getTask`: Belirli bir görevi getirir.
+-   `postTask`: Yeni bir görev ekler.
+-   `deleteTask`: Belirli bir görevi siler.
+-   `putAdminTask`: Belirli bir görevi günceller (yönetici yetkisi gerektirir).
+-   `putUserTask`: Belirli bir görevi günceller (kullanıcı yetkisi gerektirir).
+-   `taskSelection`: Belirli bir ölçüte göre görevleri getirir.
 
-## Learning Laravel
+### UsersController
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Bu sınıf, kullanıcıların yönetimiyle ilgili işlevleri sağlar. Aşağıdaki metodları içerir:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   `getUsers`: Tüm kullanıcıları getirir.
+-   `getUser`: Belirli bir kullanıcıyı getirir.
+-   `postUser`: Yeni bir kullanıcı ekler.
+-   `deleteUser`: Belirli bir kullanıcıyı siler.
+-   `putUser`: Belirli bir kullanıcıyı günceller.
+-   `getLogin`: Kullanıcı girişini doğrular.
+-   `userSelection`: Belirli bir ölçüte göre kullanıcıları getirir.
 
-## Laravel Sponsors
+### ApiKeyMiddleware
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Bu sınıf, API anahtarını doğrulamak ve kullanıcı yetkilendirmesi yapmak için bir ara yazılım sağlar.
 
-### Premium Partners
+## Endpointler
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   `/v1/user`
+    
+    -   `GET`: Belirli bir kullanıcıyı getirir.
+    -   `DELETE`: Belirli bir kullanıcıyı siler.
+    -   `PUT`: Belirli bir kullanıcıyı günceller.
+    -   `POST`: Yeni bir kullanıcı ekler.
+-   `/v1/users`
+    
+    -   `GET`: Tüm kullanıcıları getirir.
+-   `/v1/userSelection`
+    
+    -   `GET`: Belirli bir ölçüte göre kullanıcıları getirir.
+-   `/v1/login`
+    
+    -   `GET`: Kullanıcı girişini doğrular.
+-   `/v1/task`
+    
+    -   `GET`: Belirli bir görevi getirir.
+    -   `POST`: Yeni bir görev ekler.
+    -   `DELETE`: Belirli bir görevi siler.
+    -   `PUT`: Belirli bir görevi günceller (yönetici yetkisi gerektirir).
+-   `/v1/tasks`
+    
+    -   `GET`: Tüm görevleri getirir.
+-   `/v1/taskSelection`
+    -   `GET`: Belirli bir ölçüte göre görevleri getirir.
 
-## Contributing
+## Kullanım
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Bu web uygulamasını kullanmak için aşağıdaki adımları izleyebilirsiniz:
 
-## Code of Conduct
+1.  Projeyi klonlayın veya indirin.
+2.  Gereksinimleri yüklemek için aşağıdaki komutu çalıştırın: `composer install`
+3.  Veritabanı bağlantı ayarlarını `config/database.php` dosyasında yapılandırın.
+4.  Projeyi bir web sunucusunda çalıştırın.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Katkıda Bulunma
 
-## Security Vulnerabilities
+Eğer projeye katkıda bulunmak isterseniz, aşağıdaki adımları izleyebilirsiniz:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1.  Bu depoyu (`repository`) fork edin.
+2.  Yeni bir özellik veya iyileştirme için bir `branch` oluşturun.
+3.  Yaptığınız değişiklikleri `commit` edin.
+4.  `branch`'inizi `forked repository`'e (`forked repository`) push edin.
+5.  Bir `pull request` oluşturun.
 
-## License
+Lütfen yapacağınız değişiklikler için açıklayıcı bir açıklama yapın ve kodunuzu test edin.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Lisans
+
+Bu proje [MIT lisansı](https://opensource.org/licenses/MIT) ile lisanslanmıştır. Detaylı bilgi için `LICENSE` dosyasına bakabilirsiniz.
+
+## İletişim
+
+Herhangi bir sorunuz veya öneriniz varsa, bana [email](mailto:info@batuhanaydn.com) adresinden ulaşabilirsiniz.
+
+Bu README dosyasında projenin temel kullanımını ve katkıda bulunma yönergelerini bulabilirsiniz. Ayrıca lisans bilgilerini ve iletişim detaylarını da içermektedir.
+
+Umarım bu bilgiler işinize yarar. Başka bir sorunuz varsa, yardımcı olmaktan mutluluk duyarım.
